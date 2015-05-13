@@ -1,6 +1,6 @@
 # Exercise 1 Solution:
 #Import the med trial dataset:
-med <- read.csv('/Users/atrivedi/R/Code/Dallas_Tutorial/data/MedicalData.csv')
+med <- read.csv('./data/MedicalData.csv')
 View(med)
 plot(med$Cholesterol, med$Glucose, main='Cholesterol and Glucose', 
      xlab = 'Cholesterol', ylab = 'Glucose', 

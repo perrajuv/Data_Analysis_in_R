@@ -13,7 +13,7 @@ library(ggplot2); library(scales); library(grid); library(RColorBrewer)
 # Theme created at start of file for orgazinational purposes
 
 #Import cars dataset:
-cars <- read.csv('/Users/atrivedi/R/Code/Dallas_Tutorial/data/Cars.csv')
+cars <- read.csv('./data/Cars.csv')
 head(cars)
 
 #ggplot uses a different "grammar" for building plots 
@@ -59,7 +59,7 @@ mpg + geom_point() + facet_grid(Origin ~ .)
 mpg + geom_point() + facet_grid(Origin ~ Type)
 
 #Import buzzfeed headlines dataset:
-df <- read.csv("/Users/atrivedi/R/Code/Dallas_Tutorial/data/buzzfeed_headlines.csv")
+df <- read.csv("./data/buzzfeed_headlines.csv")
 head(df)
 
 

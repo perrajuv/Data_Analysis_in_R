@@ -4,7 +4,7 @@
 #---------------------------------#
 
 #Import the med trial dataset:
-med <- read.csv('/Users/atrivedi/R/Code/Dallas_Tutorial/data/MedicalData.csv')
+med <- read.csv('./data/MedicalData.csv')
 head(med)
 
 #BMI and BP measurements#
