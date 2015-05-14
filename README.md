@@ -3,6 +3,8 @@ Data Analysis and Graphics using R
 
 Please go to the README.pdf and follow instructions to install R and RStudio. After successfull installation, please download the code and data for the tutorial.
 
+Please download the presentation too (if you want) from the presentations folder.
+
 Acknowledgements:
 1. Hox, Joop. "Multilevel Analysis”:http://joophox.net/mlbook1/preview.pdf
 2. W.B. King. “Linear Regression”: 
