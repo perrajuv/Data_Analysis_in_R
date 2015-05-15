@@ -1,3 +1,8 @@
+#Exercise 1:
+#1. Make a scatterplot that shows cholesterol (IV) and glucose (DV).  
+#2. Add lines at the mean and median cholesterol values.
+#3. Highlight the point with the highest cholesterol.
+
 # Exercise 1 Solution:
 #Import the med trial dataset:
 med <- read.csv('./data/MedicalData.csv')
@@ -16,6 +21,9 @@ legend(1500,180,
        pch=c(20,20),
        col=c('blue','dark green','black'))
 
+#Exercise 2
+#1. Make a plot that compares the distributions of BMI across age groups. 
+#2. Export it to your working directory as a .pdf (using code).
 
 # Exercise 2 Solution:
 pdf('myboxplot.pdf')

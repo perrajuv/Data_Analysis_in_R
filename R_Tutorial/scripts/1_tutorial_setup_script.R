@@ -11,4 +11,5 @@
 
 #---Set R Working Directory---#
 getwd()
+# put your directory path to R_Tutorial
 setwd('/Users/atrivedi/Documents/TACC/GitHub/DataAnalysisAndGraphicsUsingR/R_Tutorial')

@@ -76,14 +76,6 @@ abline(h=mean(med$BP),col='blue',lty=2)
 abline(v=mean(med$BMI),col='dark green',lwd=4)
 abline(lm(med$BP~med$BMI),col='red')
 
-
-
-#Exercise 1:
-#1. Make a scatterplot that shows cholesterol (IV) and glucose (DV).  
-#2. Add lines at the mean and median cholesterol values.
-#3. Highlight the point with the highest cholesterol.
-
-
 #Histograms#
 hist(med$Cholesterol)
 
@@ -115,9 +107,6 @@ boxplot(med$Glucose~med$Diabetic, main='Saliva Glucose Levels',
         ylab='Glucose (mg/dL)', xlab='Diabetic Status',
         names=c('No','Yes'), col=c('#0571b0','#ca0020'))
 
-#Exercise 2
-#1. Make a plot that compares the distributions of BMI across age groups. 
-#2. Export it to your working directory as a .pdf (using code).
 
 
 #Barplot - Displays for categorical variables#

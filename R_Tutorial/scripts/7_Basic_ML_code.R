@@ -142,7 +142,6 @@ train_pca$class <- train$class
 # Compare the alignment of the clusters to the axis in the feature
 # space versus the transformed space.
 par(mfrow=c(1,2))
-train_lda <- as.matrix(train[,1:2]) %*% l$scaling
 plot_it()
 plot(train_pca[,1:2], type='n')
 text(train_pca[,1:2], train_pca$class)
