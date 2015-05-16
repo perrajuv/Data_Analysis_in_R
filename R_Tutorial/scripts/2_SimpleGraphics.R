@@ -6,6 +6,7 @@
 #Import the med trial dataset:
 med <- read.csv('./data/MedicalData.csv')
 head(med)
+View(med)
 
 #BMI and BP measurements#
 # Explaining fivenum():
@@ -62,10 +63,10 @@ plot(females$BMI,females$BP,main='BMI and Blood Pressure',
      xlab='BMI',ylab='Blood Pressure (mmHg)',
      pch=20,col='orange')
 points(males$BMI,males$BP,
-       pch=20,col='blue')
+       pch=17,col='blue')
 legend(45,70,
        c('Females','Males'),
-       pch=c(20,20),
+       pch=c(20,17),
        col=c('orange','blue'))
 
 #3. Add model fit lines or lines at meaningful values with abline()
@@ -110,6 +111,7 @@ boxplot(med$Glucose~med$Diabetic, main='Saliva Glucose Levels',
 
 
 #Barplot - Displays for categorical variables#
+# 1 is True, 0 is False
 table(med$Diabetic)
 barplot(table(med$Diabetic))
 
@@ -129,6 +131,9 @@ barplot(a,ylim=c(0,100),main='Diabetic Status by Gender',
 #Option to add categories beside each other in barplot
 barplot(a,main='Diabetic Status by Gender',
         ylab='Frequency',col=c('#018571','#b2abd2'),beside=T)
+legend("topright", inset=.05,title="Status", c('No','Yes'),
+       pch=c(20,20), col=c('#018571','#b2abd2'))
+
 
 
 #Density plots#

@@ -53,6 +53,7 @@ fte_theme <- function() {
 #Import cars dataset:
 cars <- read.csv('./data/Cars.csv')
 head(cars)
+View(cars)
 
 #ggplot uses a different "grammar" for building plots 
 #than other graphics functions. It takes 2 steps:
@@ -62,34 +63,46 @@ head(cars)
 ###
 ### Chart 0-1: Barplot & Scatterplot
 ###
+
 typebar <- ggplot(cars,aes(x=Type))
 typebar + geom_bar()
 mpg <- ggplot(cars,aes(x=Weight,y=HighwayMPG))
 mpg + geom_point()
+
 #Change properties of the graph by adding more layers...
 mpg + geom_point(pch=24,cex=2.5) + 
   labs(list(title='Car Weights and MPG', x='Weight',y='MPG'))
 mpg + geom_point() + 
-  geom_vline(xintercept=mean(cars$Weight)) + 
-  geom_hline(yintercept=mean(cars$HighwayMPG))
+  geom_vline(xintercept=mean(cars$Weight),col='red') + 
+  geom_hline(yintercept=mean(cars$HighwayMPG),col='blue')
+
 #Smoothing method="gam" if max(frequency)>1000. If <1000, method="loess".
 mpg + geom_point() + 
   stat_smooth(method="loess")
 mpg + geom_point() + 
   xlim(c(2500,4000)) + 
   ylim(c(20,35))
-#You can color or fill your graphs with another attribute:
+
+
+#You can color or fill your graphs with other attributes:
+
+# we use 2 attributes here - Type and Origin
 typebar2 <- ggplot(cars,aes(x=Type,fill=Origin))
 typebar2 + geom_bar()
+# Plotting the same graph using  color palette
+typebar2 + geom_bar() + scale_fill_brewer(type='seq',palette=3)
+
+# we use 3 attributes here - Weight, HighwayMPG, and Origin
 mpg2 <- ggplot(cars,aes(x=Weight,y=HighwayMPG,col=Origin))
 mpg2 + geom_point()
-typebar2 + geom_bar() + scale_fill_brewer(type='seq',palette=3)
+# Plotting the same graph using  color palette
 mpg2 + geom_point(pch=16,cex=2.5) + scale_colour_brewer(type='qual',palette=3)
 
 ###
 ### Chart 0-2: Facet Grid
+### It lay out panels in a grid.
 ###
-
+mpg <- ggplot(cars,aes(x=Weight,y=HighwayMPG))
 # Divide with "Origin" horizontal:
 mpg + geom_point() + facet_grid(. ~ Origin)
 # Divide with "Origin" vertical:
@@ -98,12 +111,14 @@ mpg + geom_point() + facet_grid(Origin ~ .)
 mpg + geom_point() + facet_grid(Origin ~ Type)
 
 #Import buzzfeed headlines dataset:
+# Listicle (Likes per article)
 df <- read.csv("./data/buzzfeed_headlines.csv")
 head(df)
+View(df)
 
 
 ###
-### Chart 1-1: Histogram of Listicle sizes
+### Chart 1-1: Histogram of Listicle (Likes per article) sizes
 ###
 
 ggplot(df, aes(listicle_size)) + geom_histogram(binwidth=1)
@@ -137,8 +152,7 @@ ggplot(df, aes(listicle_size)) +
   fte_theme() +
   labs(title="Distribution of Listicle Sizes for BuzzFeed Listicles", x="# of Entries in Listicle", y="# of Listicles") +
   scale_x_continuous(breaks=seq(0,50, by=5)) +
-  scale_y_continuous(labels=comma) + 
-  geom_hline(yintercept=0, size=0.4, color="black")
+  scale_y_continuous(labels=comma) 
 ggsave("ggplot2_graphics_4.png", dpi=300, width=4, height=3)
 
 
@@ -155,8 +169,8 @@ ggsave("ggplot2_graphics_5.png", dpi=300, width=4, height=3)
 ###
 
 ggplot(df, aes(x=listicle_size, y=num_fb_shares)) +
-  geom_point(alpha=0.05) +
-  scale_y_log10(labels=comma) 
+  geom_point(alpha=0.5) +     # introduce transparency
+  scale_y_log10(labels=comma) # reduce the y scale logrithmically
 ggsave("ggplot2_graphics_6.png", dpi=300, width=4, height=3)
 
 ###
@@ -164,10 +178,12 @@ ggsave("ggplot2_graphics_6.png", dpi=300, width=4, height=3)
 ###
 
 ggplot(df, aes(x=listicle_size, y=num_fb_shares)) +
-  geom_point(alpha=0.05) +
+  geom_point(alpha=0.5) +
   scale_y_log10(labels=comma) +
   fte_theme() +
-  labs(x="# of Entries in Listicle", y="# of Facebook Shares", title="FB Shares vs. Listicle Size for BuzzFeed Listicles")
+  labs(x="# of Entries in Listicle",
+       y="# of Facebook Shares", 
+       title="FB Shares vs. Listicle Size for BuzzFeed Listicles")
 ggsave("ggplot2_graphics_7.png", dpi=300, width=4, height=3)
 
 ###
@@ -175,7 +191,7 @@ ggsave("ggplot2_graphics_7.png", dpi=300, width=4, height=3)
 ###
 #Smoothing method="gam" if max(frequency)>1000. If <1000, method="loess".
 ggplot(df, aes(x=listicle_size, y=num_fb_shares)) +
-  geom_point(alpha=0.05, color="#c0392b") +
+  geom_point(alpha=0.5, color="#c0392b") +
   scale_x_continuous(breaks=seq(0,50, by=5)) +
   scale_y_log10(labels=comma, breaks=10^(0:6)) +
   geom_hline(yintercept=1, size=0.4, color="black") +
